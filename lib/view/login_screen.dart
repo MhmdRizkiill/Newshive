@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool obscureText = true;
   String? errorMessage;
 
-  final String dummyEmail = "udin@example.com";
+  final String dummyEmail = "prabowo@gmail.com";
   final String dummyPassword = "1234";
 
   bool isEmailInvalid = false;

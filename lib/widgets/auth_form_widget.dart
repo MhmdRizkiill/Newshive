@@ -1,4 +1,3 @@
-// widgets/custom_input_field.dart
 import 'package:flutter/material.dart';
 import 'package:news_hive/utils/helper.dart';
 
@@ -6,8 +5,8 @@ class AuthFormWidget extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final String hintText;
-  final TextInputType keyboardType;
   final bool obscureText;
+  final TextInputType keyboardType;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
@@ -17,8 +16,8 @@ class AuthFormWidget extends StatelessWidget {
     required this.label,
     required this.controller,
     required this.hintText,
-    this.keyboardType = TextInputType.text,
     this.obscureText = false,
+    this.keyboardType = TextInputType.text,
     this.suffixIcon,
     this.validator,
     this.onChanged,
@@ -29,42 +28,49 @@ class AuthFormWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: '*',
-                style: poppinsStyle(
-                  fontSize: tsSubtitle2,
-                  fontWeight: fRegular,
-                  color: cRequired,
-                ),
-              ),
-              TextSpan(
-                text: ' $label',
-                style: poppinsStyle(
-                  fontSize: tsSubtitle2,
-                  fontWeight: fRegular,
-                  color: cBlack,
-                ),
-              ),
-            ],
+        Text(
+          label,
+          style: poppinsStyle(
+            fontSize: tsSubtitle2,
+            fontWeight: fMedium,
+            color: cBlack,
           ),
         ),
-        vsSuperTiny,
+        vsXSmall,
         TextFormField(
           controller: controller,
-          keyboardType: keyboardType,
           obscureText: obscureText,
+          keyboardType: keyboardType,
           validator: validator,
           onChanged: onChanged,
+          style: poppinsStyle(
+            fontSize: tsSubtitle2,
+            fontWeight: fRegular,
+            color: cBlack,
+          ),
           decoration: InputDecoration(
             hintText: hintText,
-            enabledBorder: enabledBorder,
-            focusedBorder: focusBorder,
-            errorBorder: errorBorder,
-            focusedErrorBorder: focusedErrorBorder,
+            hintStyle: poppinsStyle(
+              fontSize: tsSubtitle2,
+              fontWeight: fRegular,
+              color: cTextBlue,
+            ),
+            filled: true,
+            fillColor: cLinear.withOpacity(0.3),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 12,
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
             suffixIcon: suffixIcon,
+            errorStyle: poppinsStyle(
+              fontSize: tsCaption,
+              fontWeight: fRegular,
+              color: cError,
+            ),
           ),
         ),
       ],
